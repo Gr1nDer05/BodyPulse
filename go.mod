@@ -1,4 +1,4 @@
-module github.com/Gr1nDer05/FitnessApp
+module github.com/Gr1nDer05/BodyPulse
 
 go 1.25.0
 
