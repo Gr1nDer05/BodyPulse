@@ -43,11 +43,11 @@ func ValidateFoodEntry(UserID int64, ProductID uuid.UUID, Weight int64, MealType
 	return nil
 }
 
-func ValidateProduct(Name string, ProductID uuid.UUID, Calories float64, Proteins float64, Fats float64, Carbs float64) error {
+func ValidateProduct(ProductID uuid.UUID, Name string, Calories float64, Proteins float64, Fats float64, Carbs float64) error {
 	if ProductID == uuid.Nil {
 		return ErrInvalidProductID
 	}
-	if Name == "" {
+	if Name == "" || len(Name) > 50 {
 		return ErrInvalidName
 	}
 	if Calories <= 0 {
