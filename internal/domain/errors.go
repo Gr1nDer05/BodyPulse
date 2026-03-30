@@ -27,6 +27,13 @@ func (m MealType) isValid() bool {
 	}
 }
 
+func ValidateUserID(UserID int64) error {
+	if UserID <= 0 {
+		return ErrInvalidUserID
+	}
+	return nil
+}
+
 func ValidateFoodEntry(UserID int64, ProductID uuid.UUID, Weight int64, MealType MealType) error {
 	if UserID <= 0 {
 		return ErrInvalidUserID
@@ -43,7 +50,10 @@ func ValidateFoodEntry(UserID int64, ProductID uuid.UUID, Weight int64, MealType
 	return nil
 }
 
-func ValidateProduct(ProductID uuid.UUID, Name string, Calories float64, Proteins float64, Fats float64, Carbs float64) error {
+func ValidateProduct(UserID int64, ProductID uuid.UUID, Name string, Calories float64, Proteins float64, Fats float64, Carbs float64) error {
+	if UserID <= 0 {
+		return ErrInvalidUserID
+	}
 	if ProductID == uuid.Nil {
 		return ErrInvalidProductID
 	}

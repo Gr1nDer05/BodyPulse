@@ -20,4 +20,8 @@ func NewRepository(db *pgxpool.Pool) *repository {
 type ProductRepository interface {
 	CreateUserProduct(ctx context.Context, product domain.Product) error
 	FindProductByName(cxt context.Context, name string) ([]domain.Product, error)
+	ListFoodsByUser(ctx context.Context, userID int64) ([]domain.Product, error)
+}
+
+type FoodEntryRepository interface {
 }
